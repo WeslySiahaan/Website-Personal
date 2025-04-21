@@ -12,8 +12,8 @@
     <style>
       /* Base Styles */
       :root {
-        --primary: #4a00e0;
-        --secondary: #8e2de2;
+        --primary: #e00404; /* Red */
+        --secondary: #ff4040; /* Lighter red */
         --dark: #121212;
         --light: #f4f4f4;
         --gray: #888;
@@ -100,12 +100,12 @@
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(74, 0, 224, 0.4);
+        box-shadow: 0 4px 15px rgba(224, 4, 4, 0.4);
       }
 
       .btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(74, 0, 224, 0.6);
+        box-shadow: 0 8px 20px rgba(224, 4, 4, 0.6);
       }
 
       /* Header */
@@ -184,20 +184,29 @@
 
       /* Contact Section */
       #contact {
-        background: radial-gradient(
-            circle at top right,
-            rgba(142, 45, 226, 0.2),
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at bottom left,
-            rgba(74, 0, 224, 0.2),
-            transparent 50%
-          );
         padding: 100px 0;
         color: var(--light);
         position: relative;
         overflow: hidden;
+      }
+
+      .contact-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at top right,
+            rgba(255, 64, 64, 0.2),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(224, 4, 4, 0.2),
+            transparent 50%
+          );
+        z-index: -1;
       }
 
       .contact-content {
@@ -320,6 +329,16 @@
         transform: translateY(-5px);
       }
 
+      /* Particles */
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
       /* Responsive */
       @media screen and (max-width: 1024px) {
         /* No specific changes here */
@@ -423,6 +442,8 @@
 
     <!-- Contact Section -->
     <section id="contact">
+      <div class="contact-bg"></div>
+      <div id="particles-js"></div>
       <div class="container">
         <h2>Get In Touch</h2>
         <div class="contact-content">
@@ -474,7 +495,7 @@
                   <a href="https://www.linkedin.com/in/wesly-siahaan-a27751294/">linkedin.com/in/wesly-siahaan</a>
                 </div>
               </div>
-              <a href="mailto:siahaanwesly93@gmail.com">Send Message</a>
+              <a href="mailto:siahaanwesly93@gmail.com" class="btn">Send Message</a>
             </div>
           </div>
         </div>
@@ -491,19 +512,129 @@
           <a href="Skill.html">Skills</a>
           <a href="Sertifikat.html">Certificates</a>
           <a href="Proyek.html">Projects</a>
-          <a href="Contact.html">Contact</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div class="footer-social">
           <a href="https://github.com/weslysiahaan"><i class="fab fa-github"></i></a>
           <a href="https://www.linkedin.com/in/wesly-siahaan-a27751294/"><i class="fab fa-linkedin"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-        <p>Designed and developed with ❤️</p>
+        <p>Designed and developed by me.</p>
       </div>
     </footer>
 
+    <!-- Particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
     <!-- Mobile Navigation Toggle -->
     <script>
+      // Particles.js initialization
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#e00404",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#e00404",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: true,
+      });
+
       const header = document.querySelector("header");
       const mobileToggle = document.querySelector(".mobile-toggle");
       const nav = document.querySelector("nav ul");
